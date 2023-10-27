@@ -1,0 +1,14 @@
+* {
+    margin-bottom: 2px;
+  }
+  input{
+    border-radius: 25px;
+    padding: 5px 10px;
+  }
+  button{
+    margin-top: 20px;
+  }
+  #wyniki p{
+    color: blue;;
+    font-size: 18px;
+  }

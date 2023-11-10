@@ -55,29 +55,6 @@ let recording = false;
 let currentPath = "";
 
 
-const playSound= (key) => {
-    const sound = sounds.find(sound => sound.key === key);
-    const audio = new Audio(sound.path);
-    audio.play();
-    if(recording){
-        switch(currentPath) {
-            case "pathOne":
-                pathOne.push(sound);
-                break;
-            case "pathTwo":
-                pathTwo.push(sound);
-                break;
-            case "pathThree":
-                pathThree.push(sound);
-                break;
-            case "pathFour":
-                pathFour.push(sound);
-                break;
-        }
-    }
-}
-document.addEventListener("keydown", (event) => playSound(event.key), false);
-
 const recordingButtons = document.querySelectorAll(".btnRecord");
 
 const startRecord = (event) => {
@@ -112,6 +89,30 @@ const playPath = (event) => {
             break;
     }
 }
+
+const playSound= (key) => {
+    const sound = sounds.find(sound => sound.key === key);
+    const audio = new Audio(sound.path);
+    audio.play();
+    if(recording){
+        switch(currentPath) {
+            case "pathOne":
+                pathOne.push(sound);
+                break;
+            case "pathTwo":
+                pathTwo.push(sound);
+                break;
+            case "pathThree":
+                pathThree.push(sound);
+                break;
+            case "pathFour":
+                pathFour.push(sound);
+                break;
+        }
+    }
+}
+document.addEventListener("keydown", (event) => playSound(event.key), false);
+
 
 const playButtons = document.querySelectorAll(".btnPlay");
 playButtons.forEach(button => button.addEventListener("click",playPath))

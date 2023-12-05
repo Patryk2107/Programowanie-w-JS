@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lab6</title>
+</head>
+
+<body>
+    <script>
+const wait = (milliseconds) => new Promise(resolve => setTimeout(resolve, milliseconds));
+const numbersArr = Array.from({ length: 100 }, () => Math.ceil(Math.random() * 100));
+
+const asyncAdd = async (a, b) => {
+	await wait(100);
+  return a + b;
+};
+
+const asyncSum = async (...arr) => {
+	let sum = arr[0];
+  let operationsCount = 0;
+	for await (const [index, num] of arr.toSpliced(0, 1).entries()) {
+  	operationsCount += 1;
+  	sum = await asyncAdd(sum, num);
+  }
+  return ({sum, operationsCount});
+};
+
+
+const masterFunction = async () => {
+  performance.mark('mark1');
+  const sum = await asyncSum(...numbersArr);
+  console.log(sum);
+  performance.mark('mark2');
+  const measure = performance.measure('test', 'mark1', 'mark2');
+  console.log(`czas wykonania: ${(measure.duration/1000).toFixed(3)}s`);
+}
+
+masterFunction();
+    </script>
+</body>
+
+</html>

@@ -12,7 +12,7 @@ let speedY = 0;
 
 const endGame = () => {
   isGameRunning = false;
-  window.alert(Zdobyte punkty: ${score});
+  window.alert(`Zdobyte punkty: ${score}`);
   clearTimeout(endGame);
 }
 
@@ -23,8 +23,8 @@ const getNumericValue = (element, isPositionLeft = false) => {
 const createNewHole = () => {
   const hole = document.createElement('div');
   hole.classList.add('correctHole');
-  hole.style.left = ${100 + Math.random() * 75 - 95}px;
-  hole.style.top = ${(Math.random() * window.innerHeight - 95) / 2}px;
+  hole.style.left = `${100 + Math.random() * 75 - 95}px`;
+  hole.style.top = `${(Math.random() * window.innerHeight - 95) / 2}px`;
   wrapper.appendChild(hole);
   holeEl = document.querySelector('.correctHole');
 }
@@ -42,12 +42,12 @@ const moveBall = () => {
   }
   if (positionX + speedX < window.innerWidth - 50 && positionX + speedX > 0) {
     positionX += speedX;
-    ballEl.style.left = ${positionX}px;
+    ballEl.style.left = `${positionX}px`;
   }
 
   if (positionY + speedY < window.innerHeight - 50 && positionY + speedY > 0) {
     positionY += speedY;
-    ballEl.style.top = ${positionY}px;
+    ballEl.style.top = `${positionY}px`;
   }
 
 
@@ -81,7 +81,7 @@ startButton.addEventListener('click', () => {
 
 restartButton.addEventListener('click', () => {
   clearTimeout(endGame);
-  setTimeout(endGame, 5_000);
+  setTimeout(endGame, 30_000);
   score = 0;
   holeEl.remove();
   createNewHole();

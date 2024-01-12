@@ -21,8 +21,6 @@ const displayWeather = (data) => {
       <h2>${data.name}</h2>
       <img src="${iconUrl}" alt="Pogoda">
       <p>Temperatura: ${data.main.temp}°C</p>
-      <p>Wilgotność: ${data.main.humidity}%</p>
-      <!-- Tutaj możesz dodać więcej informacji o pogodzie -->
   `;
   weatherContainer.appendChild(weatherCard);
 };
@@ -43,8 +41,3 @@ addCityButton.addEventListener("click", () => {
   updateWeather();
 });
 
-// Inicjalizacja
-updateWeather();
-
-// Automatyczna aktualizacja co 5 minut
-setInterval(updateWeather, 300000);
